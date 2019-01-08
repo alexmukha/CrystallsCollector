@@ -8,8 +8,16 @@ $(document).ready(function () {
     var randoms = [];
 
     function play() {
-        randomNum = Math.floor(Math.random());
+        randomNum = 19 + Math.floor(Math.random() * 102);
+        $("#rNumber").text(randomNum);
+    }
 
+
+
+
+
+
+    
     play();
 
 });
