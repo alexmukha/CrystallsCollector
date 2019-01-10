@@ -26,6 +26,10 @@ $(document).ready(function () {
         };
         var gems = shuffle(jewels); // Shuffle gem order
 
+        var gem1 = gems[0];
+        $("#gem1").html("<img src=\"./assets/images/" + gem1 + ".png\" alt=\"First Crystal\" title=\"" + gem1 + "\">");
+
+
     function calculate() {
         if (randomNum === totalScore) {
             wins++;
