@@ -12,6 +12,19 @@ $(document).ready(function () {
         $("#rNumber").text(randomNum);
     }
 
+        // Function to shuffle jewels array
+        function shuffle(array) {
+            var temp;
+            var i = array.length
+            while (i) {
+                var m = Math.floor(Math.random() * i--);
+                temp = array[i];
+                array[i] = array[m];
+                array[m] = temp;
+            };
+            return array;
+        };
+        var gems = shuffle(jewels); // Shuffle gem order
 
     function calculate() {
         if (randomNum === totalScore) {
