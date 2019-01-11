@@ -30,19 +30,27 @@ $(document).ready(function () {
         $("#gem1").html("<img src=\"./assets/images/" + gem1 + ".png\" alt=\"First Crystal\" title=\"" + gem1 + "\">");
 
 
-    function calculate() {
-        if (randomNum === totalScore) {
-            wins++;
-            $("#wins").text(wins);
-            totalScore = 0;
-            randoms = [];
-            play()
-
+        function calculate() {
+            if (randomNum === totalScore) {
+                wins++;
+                $("#wins").text(wins);
+                totalScore = 0;
+                randoms = [];
+                play()
+    
+            } else if (randomNum > totalScore) {
+                console.log("Keep playing");
+            } else {
+                losses++;
+                $("#losses").text(losses);
+                totalScore = 0;
+                randoms = [];
+                play()
+            }
+            $("#rNumber").text(randomNum);
+            $("#guess").text(totalScore);
         }
-
-
-    }
-
+    
     $("#gem1").on("click", function () {
         totalScore = (randoms[0] + totalScore);
         console.log("Gem1 clicked");
