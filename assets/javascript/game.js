@@ -51,11 +51,22 @@ $(document).ready(function () {
             $("#guess").text(totalScore);
         }
     
-    $("#gem1").on("click", function () {
-        totalScore = (randoms[0] + totalScore);
-        console.log("Gem1 clicked");
-        calculate();
-    })
+        $("#gem1").on("click", function () {
+            totalScore = (randoms[0] + totalScore);
+            calculate();
+        })
+        $("#gem2").on("click", function () {
+            totalScore = (randoms[1] + totalScore);
+            calculate();
+        })
+        $("#gem3").on("click", function () {
+            totalScore = (randoms[2] + totalScore);
+            calculate();
+        })
+        $("#gem4").on("click", function () {
+            totalScore = (randoms[3] + totalScore);
+            calculate();
+        })
     
     play();
 
