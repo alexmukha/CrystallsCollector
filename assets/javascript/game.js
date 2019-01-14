@@ -13,7 +13,8 @@ var playing = false;
 
 function play() {
     randomNum = 19+Math.floor(Math.random()*102);
-
+    $("#rNumber").text(randomNum);
+    
 // Function to shuffle jewels array
 function shuffle(array){
     var temp;
