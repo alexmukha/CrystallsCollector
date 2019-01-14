@@ -1,12 +1,11 @@
 $(document).ready(function() { // Document.ready.start
 
 var jewels = ["blue","green","yellow","pink"]; 
-var wins = "";
-var losses = "";
+var wins = 0;
+var losses = 0;
 var randomNum = 0;
 var totalScore = 0;
 var randoms = [];
-var random1 = "";
 var randomsGem = [];
 var playing = false;
 
@@ -14,7 +13,6 @@ var playing = false;
 
 function play() {
     randomNum = 19+Math.floor(Math.random()*102);
-console.log("Random number - "+randomNum);
 
 // Function to shuffle jewels array
 function shuffle(array){
@@ -34,13 +32,7 @@ function shuffle(array){
     for (var i = 0; i < gems.length; i++) {
     var randomGem = 1 + Math.floor(Math.random() * 12);
     randoms.push(randomGem); // Creating an array with 4 random numbers for each jewel
-    // console.log(randomGem); // Each random number
-    // console.log(gems); // Each random number
-    // console.log(jewels); // Each random number
-    // console.log(randomGem); // Each random number
-    
     }
-    // console.log(randoms[0]);
     var gem1 = gems[0];
     var gem2 = gems[1];
     var gem3 = gems[2];
@@ -52,35 +44,42 @@ function shuffle(array){
 }
 
 function calculate() {
-
+if (randomNum === totalScore) {
+    wins++;
+    $("#wins").text(wins);
+    totalScore = 0;
+    randoms = [];
+    play()
+    
+} else if (randomNum > totalScore) {
+    console.log("Keep playing");
+} else {
+    losses++;
+    $("#losses").text(losses);
+    totalScore = 0;
+    randoms = [];
+    play()
+}
+$("#rNumber").text(randomNum);
+$("#guess").text(totalScore);
 }
 
 $("#gem1").on("click", function() {
-    console.log("Gem 1 pressed");
     totalScore = (randoms[0]+totalScore);
-    console.log(totalScore);
-
 calculate();
-    // console.log(totalScore);
 })
 $("#gem2").on("click", function() {
-    console.log("Gem 2 pressed");
     totalScore = (randoms[1]+totalScore);
-    console.log(totalScore);
+    calculate();
 })
 $("#gem3").on("click", function() {
-    console.log("Gem 3 pressed");
     totalScore = (randoms[2]+totalScore);
-    console.log(totalScore);
+    calculate();
 })
 $("#gem4").on("click", function() {
-    console.log("Gem 4 pressed");
     totalScore = (randoms[3]+totalScore);
-    console.log(totalScore);
+    calculate();
 })
-
-
-
 
 play();
 
